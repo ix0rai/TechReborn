@@ -59,6 +59,7 @@ public record FluidInstance(FluidVariant fluidVariant, FluidValue amount) {
 	}
 
 	public FluidVariant fluidVariant() {
+		if (isEmpty()) return FluidVariant.blank();
 		return fluidVariant;
 	}
 
