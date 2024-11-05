@@ -308,7 +308,7 @@ public class ReiPlugin implements REIClientPlugin {
 
 	public static Widget createFluidDisplay(Rectangle bounds, EntryStack<FluidStack> fluid, EntryAnimation animation) {
 		EntryStack<FluidStack> copy = fluid.copy();
-		fluid.withRenderer(new FluidStackRenderer(animation, copy.getRenderer()));
+		copy.withRenderer(new FluidStackRenderer(animation, copy.getRenderer()));
 		return Widgets.createSlot(bounds).entry(copy);
 	}
 
