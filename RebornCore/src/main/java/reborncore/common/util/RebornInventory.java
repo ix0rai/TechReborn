@@ -33,7 +33,6 @@ import reborncore.api.items.InventoryBase;
 import reborncore.common.blockentity.MachineBaseBlockEntity;
 import reborncore.common.blockentity.SlotConfiguration;
 
-import java.util.Objects;
 
 public class RebornInventory<T extends MachineBaseBlockEntity> extends InventoryBase {
 
@@ -107,12 +106,12 @@ public class RebornInventory<T extends MachineBaseBlockEntity> extends Inventory
 		hasChanged = true;
 	}
 
-	public void write(NbtCompound data) {
-		write(data, "Items");
+	public void write(NbtCompound data, RegistryWrapper.WrapperLookup registryLookup) {
+		write(data, "Items", registryLookup);
 	}
 
-	public void write(NbtCompound data, String tag) {
-		data.put(tag, serializeNBT(Objects.requireNonNull(blockEntity.getWorld()).getRegistryManager()));
+	public void write(NbtCompound data, String tag, RegistryWrapper.WrapperLookup registryLookup) {
+		data.put(tag, serializeNBT(registryLookup));
 	}
 
 

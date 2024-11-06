@@ -131,7 +131,7 @@ public class ChunkLoaderBlockEntity extends MachineBaseBlockEntity implements IT
 		if (ownerUdid != null && !ownerUdid.isEmpty()){
 			tagCompound.putString("ownerUdid", ownerUdid);
 		}
-		inventory.write(tagCompound);
+		inventory.write(tagCompound, registryLookup);
 	}
 
 	@Override

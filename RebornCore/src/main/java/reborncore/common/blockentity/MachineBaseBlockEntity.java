@@ -301,7 +301,7 @@ public class MachineBaseBlockEntity extends BlockEntity implements BlockEntityTi
 	public void writeNbt(NbtCompound tagCompound, RegistryWrapper.WrapperLookup registryLookup) {
 		super.writeNbt(tagCompound, registryLookup);
 		if (getOptionalInventory().isPresent()) {
-			getOptionalInventory().get().write(tagCompound);
+			getOptionalInventory().get().write(tagCompound, registryLookup);
 		}
 		if (getOptionalCrafter().isPresent()) {
 			getOptionalCrafter().get().write(tagCompound);
@@ -312,7 +312,7 @@ public class MachineBaseBlockEntity extends BlockEntity implements BlockEntityTi
 		if (fluidConfiguration != null) {
 			tagCompound.put("fluidConfig", fluidConfiguration.write());
 		}
-		upgradeInventory.write(tagCompound, "Upgrades");
+		upgradeInventory.write(tagCompound, "Upgrades", registryLookup);
 		tagCompound.put("redstoneConfig", RedstoneConfiguration.CODEC.codec()
 			.encodeStart(NbtOps.INSTANCE, redstoneConfiguration).result().get());
 	}
