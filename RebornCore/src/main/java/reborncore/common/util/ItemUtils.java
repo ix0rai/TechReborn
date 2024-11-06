@@ -129,6 +129,7 @@ public class ItemUtils {
 			newStack.set(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT);
 			return new Pair<>(extracted, newStack);
 		}
+		newStack.set(DataComponentTypes.CONTAINER, ContainerComponent.fromStacks(entityStack));
 		return new Pair<>(extracted, newStack);
 	}
 
