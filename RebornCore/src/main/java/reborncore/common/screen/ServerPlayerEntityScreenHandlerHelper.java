@@ -34,8 +34,14 @@ import java.util.Optional;
 
 // Helper to access the ServerPlayerEntity instance from a ScreenHandlerListener
 public class ServerPlayerEntityScreenHandlerHelper {
-	private static final String CLASS_NAME = FabricLoader.getInstance().getMappingResolver().mapClassName("intermediary", "net.minecraft.class_3222$2");
-	private static final String FIELD_NAME = FabricLoader.getInstance().getMappingResolver().mapFieldName("intermediary", "net.minecraft.class_3222$2", "field_29183", "Lnet/minecraft/class_3222;");
+	private static final String INTERMEDIARY_NAMESPACE = "intermediary";
+	private static final String SERVER_PLAYER_ENTITY_INTERMEDIARY_NAME = "net.minecraft.class_3222";
+	private static final String INTERMEDIARY_FIELD_NAME = "field_29183";
+
+	private static final String INTERMEDIARY_ANON_CLASS_NAME = SERVER_PLAYER_ENTITY_INTERMEDIARY_NAME + "$2";
+	private static final String FIELD_DESC = "L" + SERVER_PLAYER_ENTITY_INTERMEDIARY_NAME.replace('.', '/') + ";";
+	private static final String CLASS_NAME = FabricLoader.getInstance().getMappingResolver().mapClassName(INTERMEDIARY_NAMESPACE, INTERMEDIARY_ANON_CLASS_NAME);
+	private static final String FIELD_NAME = FabricLoader.getInstance().getMappingResolver().mapFieldName(INTERMEDIARY_NAMESPACE, INTERMEDIARY_ANON_CLASS_NAME, INTERMEDIARY_FIELD_NAME, FIELD_DESC);
 
 	private static final Class<?> CLAZZ;
 	private static final VarHandle VAR_HANDLE;
