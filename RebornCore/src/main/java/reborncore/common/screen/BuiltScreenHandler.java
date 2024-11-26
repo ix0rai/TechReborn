@@ -47,6 +47,7 @@ import reborncore.common.network.clientbound.ScreenHandlerUpdatePayload;
 import reborncore.common.screen.builder.SyncedObject;
 import reborncore.common.util.ItemUtils;
 import reborncore.common.util.RangeUtil;
+import reborncore.mixin.ifaces.ServerPlayerEntityScreenHandler;
 
 import java.util.HashMap;
 import java.util.List;
@@ -143,8 +144,9 @@ public class BuiltScreenHandler extends ScreenHandler {
 		}
 
 		byte[] data = writeScreenHandlerData(updatedValues);
-		ServerPlayerEntityScreenHandlerHelper.getServerPlayerEntity(listener)
-			.ifPresent(serverPlayerEntity -> NetworkManager.sendToPlayer(new ScreenHandlerUpdatePayload(data), serverPlayerEntity));
+		if (listener instanceof ServerPlayerEntityScreenHandler serverPlayerEntityScreenHandler) {
+			NetworkManager.sendToPlayer(new ScreenHandlerUpdatePayload(data), serverPlayerEntityScreenHandler.rc_getServerPlayerEntity());
+		}
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})

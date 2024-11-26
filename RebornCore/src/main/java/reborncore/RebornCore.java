@@ -53,7 +53,6 @@ import reborncore.common.network.Packets;
 import reborncore.common.network.ServerBoundPackets;
 import reborncore.common.powerSystem.PowerAcceptorBlockEntity;
 import reborncore.common.recipes.PaddedShapedRecipe;
-import reborncore.common.screen.ServerPlayerEntityScreenHandlerHelper;
 import reborncore.common.util.CalenderUtils;
 import reborncore.common.util.GenericWrenchHelper;
 import team.reborn.energy.api.EnergyStorage;
@@ -138,9 +137,6 @@ public class RebornCore implements ModInitializer {
 			}
 			return null;
 		});
-
-		//noinspection ResultOfMethodCallIgnored
-		ServerPlayerEntityScreenHandlerHelper.class.getName();
 	}
 
 	public static EnvType getSide() {
