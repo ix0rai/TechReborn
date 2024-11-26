@@ -24,6 +24,7 @@
 
 package reborncore.common.screen;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.screen.ScreenHandlerListener;
 import net.minecraft.server.network.ServerPlayerEntity;
 
@@ -33,8 +34,8 @@ import java.util.Optional;
 
 // Helper to access the ServerPlayerEntity instance from a ScreenHandlerListener
 public class ServerPlayerEntityScreenHandlerHelper {
-	private static final String CLASS_NAME = ServerPlayerEntity.class.getName() + "$2";
-	private static final String FIELD_NAME = "field_29183";
+	private static final String CLASS_NAME = FabricLoader.getInstance().getMappingResolver().mapClassName("intermediary", "net.minecraft.class_3222$2");
+	private static final String FIELD_NAME = FabricLoader.getInstance().getMappingResolver().mapFieldName("intermediary", "net.minecraft.class_3222$2", "field_29183", "Lnet/minecraft/class_3222;");
 
 	private static final Class<?> CLAZZ;
 	private static final VarHandle VAR_HANDLE;
